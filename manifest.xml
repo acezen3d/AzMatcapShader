@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest schema-ver="1">
+  <guid>Az.Shader.Matcap</guid>
+  <name>Az.Shader.Matcap</name>
+  <version>1.0.0</version>
+  <author>Acezen</author>
+  <description></description>
+  <website>https://www.patreon.com/AcezenMod</website>
+  <MaterialEditor>
+    <Shader Name="Az/Matcap" AssetBundle="shader/az/matcap.unity3d" Asset="matcap">
+      <Property Name="MainTex" Type="Texture"/>
+      <Property Name="Color" Type="Color"/>
+      <Property Name="MatcapTex" Type="Texture"/>
+      <Property Name="MatcapColor" Type="Color"/>
+
+      <Property Name="MatcapNormalMap" Type="Texture"/>
+      <Property Name="MatcapNormalMapScale" Type="Float"/>
+      <Property Name="MatcapNormalMapUVRotation" Type="Float" Range="-1,1"/>
+
+      <Property Name="MatcapFresnelPower" Type="Float" Range="0,2"/>
+      <Property Name="MatcapMask" Type="Texture"/>
+      <Property Name="MatcapMaskLevel" Type="Float" Range="-1,1"/>
+
+      <Property Name="MatcapCancelCameraRolling" Type="Float"/>
+      <Property Name="MatcapReflectionAdjustment" Type="Float"/>
+
+      <Property Name="MatcapUVRotation" Type="Float" Range="-1,1"/>
+      <Property Name="MatcapBlendMode" Type="Float" Range="0,6"/>
+      <Property Name="MatcapBlurLevel" Type="Float" Range="0,7"/>
+      <Property Name="MatcapUVMethod" Type="Float" Range="0,4"/>
+    </Shader>
+  </MaterialEditor>
+</manifest>
