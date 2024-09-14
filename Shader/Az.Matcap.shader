@@ -146,7 +146,7 @@
             // https://github.com/hughsk/matcap/blob/master/matcap.glsl
             float2 MatcapUVMethod1(float3 normalVS, float3 eyeVS)
             {
-                float3 reflection = reflect(eyeVS, normalVS);
+                float3 reflection = normalize(reflect(eyeVS, normalVS));
                 float3 orthoNormal = reflection + float3(0.0, 0.0, 1.0);
                 orthoNormal = normalize(orthoNormal);
                 return orthoNormal.xy * 0.5 + 0.5;
