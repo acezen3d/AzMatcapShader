@@ -92,7 +92,9 @@ Material:
     - _MatcapBlendMode: 1
     - _MatcapBlurLevel: 0
     - _MatcapCancelCameraRolling: 0
-    - _MatcapFresnelPower: 0
+    - _MatcapFresnelBias: 0.5
+    - _MatcapFresnelPower: 1.5
+    - _MatcapFresnelScale: 1
     - _MatcapIntensity: 1
     - _MatcapMaskLevel: 1
     - _MatcapMethod: 2

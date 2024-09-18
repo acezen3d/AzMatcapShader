@@ -13,8 +13,12 @@
         _MatcapNormalMapScale ("MatcapNormalMapScale", Range(0, 1)) = 1
         _MatcapNormalMapUVRotation ("MatcapNormalMapUVRotation", Range(-1, 1)) = 0
 
-        [Header(Matcap Mask)]
+        [Header(Matcap Fresnel)]
         _MatcapFresnelPower ("MatcapFresnelPower", Range(0, 2)) = 0
+        _MatcapFresnelBias ("MatcapFresnelBias", Range(-1, 1)) = 0
+        _MatcapFresnelScale ("MatcapFresnelScale", Range(0, 2)) = 0
+
+        [Header(Matcap Mask)]
         _MatcapMask ("MatcapMask", 2D) = "white" { }
         _MatcapMaskLevel ("MatcapMaskLevel", Range(-1, 1)) = 0
 
@@ -66,6 +70,9 @@
             half _MatcapNormalMapUVRotation;
 
             half _MatcapFresnelPower;
+            half _MatcapFresnelBias;
+            half _MatcapFresnelScale;
+
             sampler2D _MatcapMask;
             float4 _MatcapMask_ST;
             half _MatcapMaskLevel;
@@ -259,7 +266,8 @@
                 half4 matcapColor = tex2Dlod(_MatcapTex, float4(matcapUV, 0.0, _MatcapBlurLevel)) * _MatcapColor;
 
                 float nDotV = dot(normalWS, viewWS);
-                float fresnel = pow(saturate(1.0 - nDotV), _MatcapFresnelPower) ;
+                float matcapFresnel = _MatcapFresnelBias + _MatcapFresnelScale * pow(1.0 - saturate(nDotV), _MatcapFresnelPower);
+
                 half matcapMask = tex2D(_MatcapMask, TRANSFORM_TEX(i.uv, _MatcapMask)).g;
                 matcapMask = saturate(matcapMask + _MatcapMaskLevel);
 
@@ -292,7 +300,7 @@
                 {
                     finalColor = matcapColor;
                 }
-                finalColor = lerp(mainColor, finalColor, matcapMask * fresnel);
+                finalColor = lerp(mainColor, finalColor, matcapMask * matcapFresnel);
 
                 return half4(finalColor.rgb, 1.0);
             }

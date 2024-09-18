@@ -18,6 +18,9 @@
       <Property Name="MatcapNormalMapUVRotation" Type="Float" Range="-1,1"/>
 
       <Property Name="MatcapFresnelPower" Type="Float" Range="0,2"/>
+      <Property Name="MatcapFresnelBias" Type="Float" Range="-1,1"/>
+      <Property Name="MatcapFresnelScale" Type="Float" Range="0,2"/>
+
       <Property Name="MatcapMask" Type="Texture"/>
       <Property Name="MatcapMaskLevel" Type="Float" Range="-1,1"/>
 
