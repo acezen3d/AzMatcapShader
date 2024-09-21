@@ -124,7 +124,7 @@
                 float3 rightAxis = (isMirror ? - 1.0 : 1.0) * cross(cameraFront, cameraUpUnit);
                 float cameraRollCos = dot(rightAxis, cameraRight) / (length(rightAxis) * length(cameraRight));
                 float cameraRoll = acos(clamp(cameraRollCos, -1.0, 1.0));
-                half cameraDir = cameraRight.y < 0.0 ? (isMirror ? - 1.0 : 1.0) : (isMirror ? 1.0 : - 1.0);
+                float cameraDir = cameraRight.y < 0.0 ? (isMirror ? - 1.0 : 1.0) : (isMirror ? 1.0 : - 1.0);
                 return cameraDir * cameraRoll;
             }
 
